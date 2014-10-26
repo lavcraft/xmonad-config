@@ -1,0 +1,15 @@
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+*.backup
+.virtualenv
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.config
+xmonad-x86_64-linux
+xmonad.errors

@@ -1,0 +1,1 @@
+/home/tolkv/repos/arch-xmonad-zsh/home/.xmonad/xmonad.hs
