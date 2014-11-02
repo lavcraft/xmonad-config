@@ -48,6 +48,7 @@ import XMonad.Layout.Spacing
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Gaps
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
 
 defaults = defaultConfig {
         terminal      = "terminator"
@@ -55,9 +56,11 @@ defaults = defaultConfig {
         , workspaces  = myWorkspaces
         --, defaultGaps  = myDefaultGaps
         , modMask     = mod4Mask
-        , borderWidth = 1
+        , borderWidth = 2
+        , startupHook = setWMName "LG3D"
         , layoutHook  = myLayoutHook
         , manageHook  = myManageHook 
+        , handleEventHook  = fullscreenEventHook
 	}`additionalKeys` myKeys
 
 myDefaultGaps   = [(0,15,0,0)]
@@ -71,7 +74,7 @@ myTabConfig = defaultTheme {
   , inactiveBorderColor = "#000000"
   , decoHeight          = 10
  }
-myLayoutHook         = gaps [(U,15)] $ toggleLayouts (noBorders Full) $
+myLayoutHook         = spacing 6 $ gaps [(U,15)] $ toggleLayouts (noBorders Full) $
                               smartBorders  $ Mirror tiled ||| Grid ||| tabbed shrinkText myTabConfig
                               where tiled = Tall 1 0.03 0.68
                               
@@ -100,11 +103,14 @@ myManageHook = composeAll . concat $
 	myTerm = ["Terminator","xterm"]
 	myVMs = ["VirtualBox"]
 	
+	--KP_Add KP_Subtract
 myKeys = [
          ((mod4Mask .|. controlMask, xK_Right), nextScreen) 
          , ((mod4Mask .|. controlMask, xK_Left ), prevScreen)
          , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-	 , ((mod4Mask, xK_s), spawnSelected defaultGSConfig ["xterm","gmplayer","gvim"])
+	 	 , ((mod4Mask, xK_s), spawnSelected defaultGSConfig ["xterm","gmplayer","gvim"])
+	 	 , ((mod4Mask, xK_KP_Add), spawn "amixer set Master 10%+")
+	 	 , ((mod4Mask, xK_KP_Subtract), spawn "amixer set Master 10%-")
          ]
                    
 
