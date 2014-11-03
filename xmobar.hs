@@ -1,4 +1,5 @@
-Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+Config { 
+    font = "xft:Droid Sans Mono:size=9:bold:antialias=true"
     bgColor = "#000000",
     fgColor = "#ffffff",
     position = Static { xpos = 0, ypos = 0, width = 1920, height = 16 },
@@ -8,7 +9,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
         ,Run Memory ["-t","Mem: <usedratio>%","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10        
         ,Run Network "enp6s0" ["-t","Net: <rx>, <tx>","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
         ,Run Date "%Y.%m.%d %H:%M:%S" "date" 10
-        ,Run MultiCpu [ "--template" , "Cpu: <total0>%_<total1>%_<total2>%_<total3>%_<total4>%_<total5>%_<total5>%_<total5>"
+        ,Run MultiCpu [ "--template" , "<autototal>"
             , "--Low"      , "50"         -- units: %
             , "--High"     , "85"         -- units: %
             , "--low"      , "gray"
@@ -16,9 +17,16 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
             , "--high"     , "darkred"
         ] 10
         ,Run PipeReader "/tmp/.volume-pipe" "vol"
+        ,Run CoreTemp [ "--template" , "<core0> <core1> <core2> <core3> <core4>°C"
+            , "--Low"      , "70"        -- units: °C
+            , "--High"     , "80"        -- units: °C
+            , "--low"      , "darkgreen"
+            , "--normal"   , "darkorange"
+            , "--high"     , "darkred"
+        ] 50
         ,Run StdinReader
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %vol% %multicpu% | %memory%  | %enp6s0% | %UUDD% | <fc=#FFFFCC>%date%</fc>   "
+    template = "%StdinReader% }{ <icon=/home/tolkv/.sysgit/dzen/bitmaps/music.xbm/> %vol% | %coretemp% | %multicpu% | %memory%  | %enp6s0% | %UUDD% | <fc=#FFFFCC>%date%</fc>   "
 }

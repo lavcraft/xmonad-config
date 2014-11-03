@@ -6,7 +6,7 @@ import System.Exit
 import Graphics.X11.Xlib
 import Graphics.X11.ExtraTypes.XF86
 --import IO (Handle, hPutStrLn)
-import qualified System.IO.UTF8
+import qualified System.IO
 import XMonad.Actions.CycleWS (nextScreen,prevScreen)
 import Data.List
  
@@ -120,7 +120,7 @@ main = do
 	xmproc <- spawnPipe "/usr/bin/xmobar /home/tolkv/.xmonad/xmobar.hs"
 	xmonad $ defaults {
 	logHook =  dynamicLogWithPP $ defaultPP {
-            ppOutput = System.IO.UTF8.hPutStrLn xmproc
+            ppOutput = System.IO.hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
