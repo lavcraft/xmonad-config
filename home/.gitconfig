@@ -1,0 +1,9 @@
+[core]
+	editor = vim
+[user]
+	name = Tolkachev Kirill
+	email = tolk.kv@gmail.com
+[color]
+	ui = true
+[push]
+	default = current

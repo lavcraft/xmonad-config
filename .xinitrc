@@ -1,1 +1,0 @@
-/home/tolkv/.sysgit/arch-config/home/.xinitrc
