@@ -8,8 +8,8 @@ Config {
          --Run Weather "UUDD" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
 	     Run Weather "UUDD" ["-t","<tempC>°C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
         ,Run Memory ["-t","<used>/<total>M (<cache>M)","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10        
-        ,Run Network "enp6s0" [
-             "-t"    ,"rx:<rx>, tx:<tx>"
+        ,Run DynNetwork [
+             "-t"    ,"<dev> rx:<rx>, tx:<tx>"
             ,"-H"   ,"200"
             ,"-L"   ,"10"
             ,"-h"   ,"#FFB6B0"
@@ -17,6 +17,7 @@ Config {
             ,"-n"   ,"#FFFFCC"
             , "-c"  , " "
             , "-w"  , "2"
+            , "-S"  , "True"
             ] 10
         ,Run Date "%Y.%m.%d %H:%M:%S" "date" 10
         ,Run MultiCpu [ "--template" , "<autototal>"
@@ -40,5 +41,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ <icon=/home/tolkv/.sysgit/dzen/bitmaps/music.xbm/> %vol% | %coretemp% | %multicpu% | %memory%  | %enp6s0% | %UUDD% | <fc=#FFFFCC>%date%</fc>   "
+    template = "%StdinReader% }{ <icon=/home/tolkv/.sysgit/dzen/bitmaps/music.xbm/> %vol% | %coretemp% | %multicpu% | %memory%  | %dynnetwork% | %UUDD% | <fc=#FFFFCC>%date%</fc>   "
 }
