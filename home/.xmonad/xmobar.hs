@@ -7,9 +7,9 @@ Config {
     commands = [
          --Run Weather "UUDD" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
 	     Run Weather "UUDD" ["-t","<tempC>°C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-        ,Run Memory ["-t","Mem: <usedratio>%","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10        
+        ,Run Memory ["-t","<used>/<total>M (<cache>M)","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10        
         ,Run Network "enp6s0" [
-             "-t"    ,"rx: <rx>, tx: <tx>"
+             "-t"    ,"rx:<rx>, tx:<tx>"
             ,"-H"   ,"200"
             ,"-L"   ,"10"
             ,"-h"   ,"#FFB6B0"
@@ -26,7 +26,7 @@ Config {
             , "--normal"   , "darkorange"
             , "--high"     , "darkred"
             , "-c"         , " "
-            , "-w"         , "2"
+            , "-w"         , "3"
         ] 10
         ,Run PipeReader "/tmp/.volume-pipe" "vol"
         ,Run CoreTemp [ "--template" , "<core0> <core1> <core2> <core3> <core4>°C"

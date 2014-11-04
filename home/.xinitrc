@@ -20,5 +20,5 @@ export _volume_pipe=/tmp/.volume-pipe
 [[ -S $_volume_pipe ]] || mkfifo $_volume_pipe
 
 #exec startxfce4
-exec dbus-launch xmonad
+exec dbus-launch --sh-syntax --exit-with-session xmonad
 
